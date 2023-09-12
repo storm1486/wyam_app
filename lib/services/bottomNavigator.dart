@@ -18,8 +18,8 @@ class _BottomNavigatorState extends State<BottomNavigator> {
   final pages = [
     Home(),
     Applications(),
-    Settings(),
     Chat(),
+    Settings()
   ];
 
   @override

@@ -1,0 +1,105 @@
+import 'package:flutter/material.dart';
+
+class Search extends StatefulWidget {
+  const Search({super.key});
+
+  @override
+  State<Search> createState() => _SearchState();
+}
+
+class _SearchState extends State<Search> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+            child: AppBar(
+                  backgroundColor: Colors.blue,
+                  title:  const Text('Search', style: TextStyle(color: Colors.black),),
+                  actions: [
+                      IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: () {
+                          showSearch(
+                              context: context,
+                              delegate: MySearchDelegate()
+                          );
+                        },
+                      ),
+                  ],
+            ),
+          ),
+        ),
+        Text('hello')
+      ],
+    );
+  }
+}
+
+class MySearchDelegate extends SearchDelegate {
+  List<String> searchResults = [
+    'Brazil',
+    'China',
+    'India',
+    'Russia',
+    'USA',
+  ];
+
+  @override
+  Widget? buildLeading(BuildContext context) =>
+      IconButton(
+          onPressed: () => close(context, null), //close search
+          icon: const Icon(Icons.arrow_back, color: Colors.black)
+      );
+
+  @override
+  List<Widget>? buildActions(BuildContext context) =>
+      [
+        IconButton(
+          onPressed: () {
+            if (query.isEmpty) {
+              close(context, null);
+            } else {
+              query = '';
+            }
+          },
+          icon: const Icon(Icons.clear),
+        )
+      ];
+
+  @override
+  Widget buildResults(BuildContext context) => Center(
+    child: Text(
+      query,
+      style: const TextStyle(fontSize: 64, fontWeight: FontWeight.bold),
+    )
+  );
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> suggestions = searchResults.where((searchResult) {
+      final result = searchResult.toLowerCase();
+      final input = query.toLowerCase();
+
+      return result.contains(input);
+    }).toList();
+
+    return ListView.builder(
+      itemCount: suggestions.length,
+      itemBuilder: (context, index) {
+        final suggestion = suggestions[index];
+
+        return ListTile(
+          title: Text(suggestion),
+          onTap: () {
+            query = suggestion;
+
+            showResults(context);
+          },
+        );
+      },
+    );
+  }
+}
