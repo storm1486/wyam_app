@@ -1,0 +1,12 @@
+storm1486.com.wyam_app-jetified-window-1.0.0-beta04-0 /Users/mitpatel/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/res
+storm1486.com.wyam_app-jetified-annotation-experimental-1.1.0-1 /Users/mitpatel/.gradle/caches/transforms-3/6c0c163cc77ae6c91f9f7dfcd179c29c/transformed/jetified-annotation-experimental-1.1.0/res
+storm1486.com.wyam_app-core-1.6.0-2 /Users/mitpatel/.gradle/caches/transforms-3/7e9df2ac2213a6bd3cef0f2f27870d79/transformed/core-1.6.0/res
+storm1486.com.wyam_app-jetified-window-java-1.0.0-beta04-3 /Users/mitpatel/.gradle/caches/transforms-3/ae81e06d24c799147c26814497a2a305/transformed/jetified-window-java-1.0.0-beta04/res
+storm1486.com.wyam_app-debug-4 /Users/mitpatel/wyam_app/android/app/src/debug/res
+storm1486.com.wyam_app-main-5 /Users/mitpatel/wyam_app/android/app/src/main/res
+storm1486.com.wyam_app-pngs-6 /Users/mitpatel/wyam_app/build/app/generated/res/pngs/debug
+storm1486.com.wyam_app-resValues-7 /Users/mitpatel/wyam_app/build/app/generated/res/resValues/debug
+storm1486.com.wyam_app-rs-8 /Users/mitpatel/wyam_app/build/app/generated/res/rs/debug
+storm1486.com.wyam_app-mergeDebugResources-9 /Users/mitpatel/wyam_app/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
+storm1486.com.wyam_app-mergeDebugResources-10 /Users/mitpatel/wyam_app/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+storm1486.com.wyam_app-merged_res-11 /Users/mitpatel/wyam_app/build/app/intermediates/merged_res/debug
