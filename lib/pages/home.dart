@@ -19,10 +19,7 @@ class _HomeState extends State<Home> {
         body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SafeArea(
-                  child: Search()
-              ),
-               SizedBox(height: 25.0),
+               Search(),
               // scroller feature
                HorizontalScroller(
                  items: [

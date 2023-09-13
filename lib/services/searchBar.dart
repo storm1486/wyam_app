@@ -10,30 +10,49 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-            child: AppBar(
-                  backgroundColor: Colors.blue,
-                  title:  const Text('Search', style: TextStyle(color: Colors.black),),
-                  actions: [
-                      IconButton(
-                        icon: const Icon(Icons.search),
-                        onPressed: () {
-                          showSearch(
-                              context: context,
-                              delegate: MySearchDelegate()
-                          );
-                        },
-                      ),
-                  ],
+    return AppBar(
+      backgroundColor: Colors.grey[200],
+      title: Container(
+        width: double.infinity,
+        height: 50.0,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(40),
+        ),
+        child: Center(
+          child: TextField(
+            readOnly: true,
+            onTap: () {
+              showSearch(
+                  context: context,
+                  delegate: MySearchDelegate(),
+              );
+            },
+            decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                hintText: 'Search...',
+                border: InputBorder.none
             ),
           ),
         ),
-        Text('hello')
+      ),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.edit_square),
+          onPressed: () {},
+        ),
       ],
+      // actions: [
+      //     IconButton(
+      //       icon: const Icon(Icons.search),
+      //       onPressed: () {
+      //         showSearch(
+      //             context: context,
+      //             delegate: MySearchDelegate()
+      //         );
+      //       },
+      //     ),
+      // ],
     );
   }
 }
