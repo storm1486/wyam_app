@@ -19,9 +19,9 @@ class _HomeState extends State<Home> {
         body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-               Search(),
+              SafeArea(child: Search()),
               // scroller feature
-               HorizontalScroller(
+              HorizontalScroller(
                  items: [
                    'All',
                    'Food',
@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
                    'Other',
                  ],
                ),
-               Expanded(
+              Expanded(
                  child: ChooseLocation(),
               ),
             ],

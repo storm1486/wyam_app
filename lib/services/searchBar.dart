@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class Search extends StatefulWidget {
   const Search({super.key});
 
@@ -12,34 +13,37 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.grey[200],
-      title: Container(
-        width: double.infinity,
-        height: 50.0,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(40),
-        ),
-        child: Center(
-          child: TextField(
-            readOnly: true,
-            onTap: () {
-              showSearch(
-                  context: context,
-                  delegate: MySearchDelegate(),
-              );
-            },
-            decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.search),
-                hintText: 'Search...',
-                border: InputBorder.none
+      title: SafeArea(
+        child: Container(
+          width: double.infinity,
+          height: 50.0,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(40),
+          ),
+          child: Center(
+            child: TextField(
+              readOnly: true,
+              onTap: () {
+                showSearch(
+                    context: context,
+                    delegate: MySearchDelegate(),
+                );
+              },
+              decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.search),
+                  hintText: 'Search...',
+                  border: InputBorder.none
+              ),
             ),
           ),
         ),
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.edit_square),
-          onPressed: () {},
+            onPressed: () {
+            },
+            icon: const Icon(Icons.edit)
         ),
       ],
       // actions: [
