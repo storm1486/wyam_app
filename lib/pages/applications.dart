@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../services/searchBar.dart';
 
 class Applications extends StatefulWidget {
+  const Applications({super.key});
+
   @override
   _ApplicationsState createState() => _ApplicationsState();
 }
