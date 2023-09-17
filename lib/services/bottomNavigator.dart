@@ -16,10 +16,10 @@ class BottomNavigator extends StatefulWidget {
 class _BottomNavigatorState extends State<BottomNavigator> {
   int currentIndex = 0;
   final pages = [
-    Home(),
-    Applications(),
-    Chat(),
-    Settings()
+    const Home(),
+    const Applications(),
+    const Chat(),
+    const Settings()
   ];
 
   @override

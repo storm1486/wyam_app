@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../services/searchBar.dart';
 
 class Applications extends StatefulWidget {
@@ -32,7 +31,7 @@ class _ApplicationsState extends State<Applications> with TickerProviderStateMix
 
     // Create an AnimationController for the rotation animation
     _controller = AnimationController(
-      duration: Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 200),
       vsync: this, // Using TickerProviderStateMixin for animation
     );
 
@@ -66,110 +65,112 @@ class _ApplicationsState extends State<Applications> with TickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          const SafeArea(child: Search()), //Search Bar at the top of the page
-          InkWell(
-            onTap: _toggleDropdown, // Trigger dropdown visibility on tap
-            child: Container(
-              padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SafeArea(child: Search()), //Search Bar at the top of the page
+            InkWell(
+              onTap: _toggleDropdown, // Trigger dropdown visibility on tap
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Applications',
+                      style: TextStyle(
+                        fontSize: 25.0,
+                        color: Colors.blue[900],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    RotationTransition(
+                      turns: _animation, // Apply rotation animation to the arrow icon
+                      child: Icon(Icons.keyboard_arrow_right, color: Colors.blue[900], size: 35.0),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Visibility(
+              visible: isDropdownVisible, // Show/hide the dropdown based on visibility
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.transparent),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: ListView(
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                  shrinkWrap: true,
+                  children: words.map((word) {
+                    return ListTile(
+                        title: Text(
+                          word,
+                          style: TextStyle(
+                            color: Colors.blue[900],
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            selectedWord = word;
+                            isDropdownVisible = false;
+                            _controller.reverse(); // Rotate arrow icon back to 0 degrees
+                          });
+                        },
+                      );
+                  }).toList(),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    'Applications',
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      color: Colors.blue[900],
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  RotationTransition(
-                    turns: _animation, // Apply rotation animation to the arrow icon
-                    child: Icon(Icons.keyboard_arrow_right, color: Colors.blue[900], size: 35.0),
-                  ),
+                  Text('Legal Documents', style: TextStyle(
+                    fontSize: 25.0,
+                    color: Colors.blue[900],
+                    fontWeight: FontWeight.bold,
+                  ),),
+                  Icon(Icons.keyboard_arrow_right, color: Colors.blue[900], size: 35.0,)
                 ],
               ),
             ),
-          ),
-          Visibility(
-            visible: isDropdownVisible, // Show/hide the dropdown based on visibility
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.transparent),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: ListView(
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                shrinkWrap: true,
-                children: words.map((word) {
-                  return ListTile(
-                      title: Text(
-                        word,
-                        style: TextStyle(
-                          color: Colors.blue[900],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                      onTap: () {
-                        setState(() {
-                          selectedWord = word;
-                          isDropdownVisible = false;
-                          _controller.reverse(); // Rotate arrow icon back to 0 degrees
-                        });
-                      },
-                    );
-                }).toList(),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text('Case Management', style: TextStyle(
+                    fontSize: 25.0,
+                    color: Colors.blue[900],
+                    fontWeight: FontWeight.bold,
+                  ),),
+                  Icon(Icons.keyboard_arrow_right, color: Colors.blue[900], size: 35.0,)
+                ],
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text('Legal Documents', style: TextStyle(
-                  fontSize: 25.0,
-                  color: Colors.blue[900],
-                  fontWeight: FontWeight.bold,
-                ),),
-                Icon(Icons.keyboard_arrow_right, color: Colors.blue[900], size: 35.0,)
-              ],
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text('Other', style: TextStyle(
+                    fontSize: 25.0,
+                    color: Colors.blue[900],
+                    fontWeight: FontWeight.bold,
+                  ),),
+                  Icon(Icons.keyboard_arrow_right, color: Colors.blue[900], size: 35.0,)
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text('Case Management', style: TextStyle(
-                  fontSize: 25.0,
-                  color: Colors.blue[900],
-                  fontWeight: FontWeight.bold,
-                ),),
-                Icon(Icons.keyboard_arrow_right, color: Colors.blue[900], size: 35.0,)
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text('Other', style: TextStyle(
-                  fontSize: 25.0,
-                  color: Colors.blue[900],
-                  fontWeight: FontWeight.bold,
-                ),),
-                Icon(Icons.keyboard_arrow_right, color: Colors.blue[900], size: 35.0,)
-              ],
-            ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }

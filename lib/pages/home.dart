@@ -16,28 +16,28 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SafeArea(child: Search()),
-              // scroller feature
-              HorizontalScroller(
-                 items: [
-                   'All',
-                   'Food',
-                   'Shelter',
-                   'Hygiene',
-                   'Health',
-                   'Work & Learn',
-                   'Finance',
-                   'Other',
-                 ],
-               ),
-              Expanded(
-                 child: ChooseLocation(),
-              ),
-            ],
-        ),
+        body:Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SafeArea(child: Search()),
+                // scroller feature
+                HorizontalScroller(
+                   items: [
+                     'All',
+                     'Food',
+                     'Shelter',
+                     'Hygiene',
+                     'Health',
+                     'Work & Learn',
+                     'Finance',
+                     'Other',
+                   ],
+                 ),
+                Expanded(
+                   child: ChooseLocation(),
+                ),
+              ],
+            ),
     );
   }
 }

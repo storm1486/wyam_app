@@ -9,54 +9,56 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.grey[200],
-      title: SafeArea(
-        child: Container(
-          width: double.infinity,
-          height: 50.0,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(40),
-          ),
-          child: Center(
-            child: TextField(
-              readOnly: true,
-              onTap: () {
-                showSearch(
-                    context: context,
-                    delegate: MySearchDelegate(),
-                );
-              },
-              decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.search),
-                  hintText: 'Search...',
-                  border: InputBorder.none
+        backgroundColor: Colors.grey[200],
+        title: SafeArea(
+          child: Container(
+            width: double.infinity,
+            height: 50.0,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(40),
+            ),
+            child: Center(
+              child: TextField(
+                readOnly: true,
+                onTap: () {
+                  showSearch(
+                      context: context,
+                      delegate: MySearchDelegate(),
+                  );
+                },
+                decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                    hintText: 'Search...',
+                    border: InputBorder.none
+                ),
               ),
             ),
           ),
         ),
-      ),
-      actions: [
-        IconButton(
-            onPressed: () {
+        actions: [
+          IconButton(
+              onPressed: () {
+                  Navigator.pushReplacementNamed(context,'/applications');
               },
-            icon: const Icon(Icons.edit)
-        ),
-      ],
-      // actions: [
-      //     IconButton(
-      //       icon: const Icon(Icons.search),
-      //       onPressed: () {
-      //         showSearch(
-      //             context: context,
-      //             delegate: MySearchDelegate()
-      //         );
-      //       },
-      //     ),
-      // ],
+              icon: const Icon(Icons.edit)
+          ),
+        ],
+        // actions: [
+        //     IconButton(
+        //       icon: const Icon(Icons.search),
+        //       onPressed: () {
+        //         showSearch(
+        //             context: context,
+        //             delegate: MySearchDelegate()
+        //         );
+        //       },
+        //     ),
+        // ],
     );
   }
 }

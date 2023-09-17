@@ -13,14 +13,14 @@ class _ChooseLocationState extends State<ChooseLocation> {
 
 
   List<Amenities> locations = [
-    Amenities(location: 'Europe/London', hours: 'London', image: '1.png'),
-    Amenities(location: 'Europe/Londons', hours: 'Londons', image: 'south_korea.png'),
-    Amenities(location: 'Europe/Londond', hours: 'Londond', image: '1.png'),
-    Amenities(location: 'Europe/Londoen', hours: 'Londoen', image: 'uk.png'),
-    Amenities(location: 'Europe/Londofn', hours: 'Londofn', image: '1.png'),
-    Amenities(location: 'Europe/Londogn', hours: 'Londogn', image: 'usa.png'),
-    Amenities(location: 'Europe/Londosn', hours: 'Londosn', image: 'south_korea.png'),
-    Amenities(location: 'Europe/Londdon', hours: 'Londdon', image: '1.png'),
+    Amenities(location: 'Location 1', hours: '7:00 am - 8:00 pm', image: '1.png'),
+    Amenities(location: 'Location 2', hours: '24 hours', image: 'south_korea.png'),
+    Amenities(location: 'Location 3', hours: '10:00 am - 3:00 pm', image: '1.png'),
+    Amenities(location: 'Location 4', hours: '12:00 pm - 9:00 pm', image: 'uk.png'),
+    Amenities(location: 'Location 5', hours: '7:00 am - 10:00 pm', image: '1.png'),
+    Amenities(location: 'Location 6', hours: '5:00 am - 2:00 am', image: 'usa.png'),
+    Amenities(location: 'Location 7', hours: '2:00 pm - 11:00 pm', image: 'south_korea.png'),
+    Amenities(location: 'Location 8', hours: '1:00 pm - 5:00 pm', image: '1.png'),
   ];
 
   @override
@@ -35,7 +35,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(10.0, 10.0, 0, 0),
+                        padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
                         child: Text(
                             'Sort by',
                             style: TextStyle(fontSize: 20.0),
@@ -43,7 +43,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0),
+                          padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
                           child: HorizontalScroller(
                             //ways to sort the location list
                                 items: [
@@ -62,31 +62,68 @@ class _ChooseLocationState extends State<ChooseLocation> {
                           itemCount: locations.length,
                           itemBuilder: (context, index) {
                             return Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+                              padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 4.0),
                                 child: Card(
-                                  child: Container(
-                                      // background image for each card
-                                      // decoration: BoxDecoration(
-                                      //   image: DecorationImage(
-                                      //     image: AssetImage('assets/${locations[index].image}'),
-                                      //     fit: BoxFit.fill,
-                                      //     colorFilter: ColorFilter.mode(
-                                      //       Colors.black.withOpacity(0.75),
-                                      //       BlendMode.dstATop,
-                                      //     )
-                                      //   ),
-                                      // ),
-                                    child: ListTile(
-                                        onTap: () {},
-                                        title: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(locations[index].location),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Stack(
+                                      children: [
+                                        Container(
+                                        height: 100,
+                                          // background image for each card
+                                          // decoration: BoxDecoration(
+                                          //   image: DecorationImage(
+                                          //     image: AssetImage('assets/${locations[index].image}'),
+                                          //     fit: BoxFit.fill,
+                                          //     colorFilter: ColorFilter.mode(
+                                          //       Colors.black.withOpacity(0.75),
+                                          //       BlendMode.dstATop,
+                                          //     )
+                                          //   ),
+                                          // ),
+                                        child: ListTile(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(20)
+                                            ),
+                                          onTap: () {},
+
+                                          title: Padding(
+                                            padding: const EdgeInsets.fromLTRB(10, 5, 0, 0),
+                                            child: Text(locations[index].location, style: TextStyle(fontSize: 20)),
+                                            ),
+                                          subtitle: Padding(
+                                            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                // Text(locations[index].address),
+                                                // Text(locations[index].distance),
+                                                Text(locations[index].hours),
+                                              ],
+                                            ),
+                                          ),
+                                          tileColor: Colors.transparent,
+                                          contentPadding: EdgeInsets.zero,
                                         ),
-                                        tileColor: Colors.transparent,
-                                        contentPadding: EdgeInsets.zero,
-                                        // leading: CircleAvatar(
-                                        //   backgroundImage: AssetImage('assets/${locations[index].flag}'),
-                                        // )
+                                      ),
+                                        Positioned(
+                                          top: 10,
+                                          right: 10,
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(20),
+                                            child: Container(
+                                              color: Colors.blue,
+                                              child: const Padding(
+                                                padding: EdgeInsets.all(6.0),
+                                                child: Text(" Available", style: TextStyle(fontSize: 12),),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                    ],
                                     ),
                                   ),
                                 ),
