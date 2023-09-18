@@ -16,12 +16,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        body:Column(
+        body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SafeArea(child: Search()),
+                 SafeArea(child: Search()),
                 // scroller feature
-                HorizontalScroller(
+                 HorizontalScroller(
                    items: [
                      'All',
                      'Food',
@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
                      'Other',
                    ],
                  ),
-                Expanded(
+                 Expanded(
                    child: ChooseLocation(),
                 ),
               ],

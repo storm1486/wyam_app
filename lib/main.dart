@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:wyam_app/pages/applications.dart';
 import 'package:wyam_app/pages/home.dart';
-import 'package:wyam_app/services/bottomNavigator.dart';
-import 'package:wyam_app/services/searchBar.dart';
+import 'package:wyam_app/pages/main_page.dart';
 
 void main() => runApp(MaterialApp(
  initialRoute: '/',
  routes: {
-  '/': (context) => const BottomNavigator(),
+  '/': (context) => const MainPage(),
   '/home': (context) => const Home(),
   '/applications': (context) => const Applications(),
-  '/search': (context) => const Search(),
-  // '/location': (context) => const ChooseLocation(),
  },
-
-
 ));

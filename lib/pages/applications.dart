@@ -9,7 +9,6 @@ class Applications extends StatefulWidget {
 }
 
 class _ApplicationsState extends State<Applications> with TickerProviderStateMixin {
-  String selectedWord = '';
   bool isDropdownVisible = false;
 
   List<String> words = [
@@ -66,30 +65,67 @@ class _ApplicationsState extends State<Applications> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey[200],
+        title: Container(
+            width: double.infinity,
+            height: 50.0,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(40),
+            ),
+            child: Center(
+              child: TextField(
+                readOnly: true,
+                onTap: () {
+                  showSearch(
+                    context: context,
+                    delegate: MySearchDelegate(),
+                  );
+                },
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search, color: Colors.grey[700],),
+                    hintText: 'Search for an application...',
+                    border: InputBorder.none
+                ),
+              ),
+            ),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Applications()));
+              },
+              icon: const Icon(Icons.edit)
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SafeArea(child: Search()), //Search Bar at the top of the page
-            InkWell(
-              onTap: _toggleDropdown, // Trigger dropdown visibility on tap
-              child: Container(
-                padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Applications',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        color: Colors.blue[900],
-                        fontWeight: FontWeight.bold,
+            // const SafeArea(child: Search()), //Search Bar at the top of the page
+            SafeArea(
+              child: InkWell(
+                onTap: _toggleDropdown, // Trigger dropdown visibility on tap
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Applications',
+                        style: TextStyle(
+                          fontSize: 25.0,
+                          color: Colors.blue[900],
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    RotationTransition(
-                      turns: _animation, // Apply rotation animation to the arrow icon
-                      child: Icon(Icons.keyboard_arrow_right, color: Colors.blue[900], size: 35.0),
-                    ),
-                  ],
+                      RotationTransition(
+                        turns: _animation, // Apply rotation animation to the arrow icon
+                        child: Icon(Icons.keyboard_arrow_right, color: Colors.blue[900], size: 35.0),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -117,7 +153,6 @@ class _ApplicationsState extends State<Applications> with TickerProviderStateMix
                         ),
                         onTap: () {
                           setState(() {
-                            selectedWord = word;
                             isDropdownVisible = false;
                             _controller.reverse(); // Rotate arrow icon back to 0 degrees
                           });

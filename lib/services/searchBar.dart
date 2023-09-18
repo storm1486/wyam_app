@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../pages/applications.dart';
 
 
 class Search extends StatefulWidget {
@@ -31,8 +32,8 @@ class _SearchState extends State<Search> {
                       delegate: MySearchDelegate(),
                   );
                 },
-                decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.search),
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search, color: Colors.grey[700]),
                     hintText: 'Search...',
                     border: InputBorder.none
                 ),
@@ -43,33 +44,22 @@ class _SearchState extends State<Search> {
         actions: [
           IconButton(
               onPressed: () {
-                  Navigator.pushReplacementNamed(context,'/applications');
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Applications()));
               },
               icon: const Icon(Icons.edit)
           ),
         ],
-        // actions: [
-        //     IconButton(
-        //       icon: const Icon(Icons.search),
-        //       onPressed: () {
-        //         showSearch(
-        //             context: context,
-        //             delegate: MySearchDelegate()
-        //         );
-        //       },
-        //     ),
-        // ],
     );
   }
 }
 
 class MySearchDelegate extends SearchDelegate {
   List<String> searchResults = [
-    'Brazil',
-    'China',
-    'India',
-    'Russia',
-    'USA',
+    'Search Item 1',
+    'Search Item 2',
+    'Search Item 3',
+    'Search Item 4',
+    'Search Item 5',
   ];
 
   @override
