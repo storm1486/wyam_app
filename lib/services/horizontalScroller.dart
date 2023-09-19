@@ -40,9 +40,9 @@ class _ScrollerItemState extends State<_ScrollerItem> {
         });
       },
       child: Container(
-        width: 100.0, // Adjust the width as needed
+        width: 120.0, // Adjust the width as needed
         height: 50.0, // Adjust the height as needed
-        margin: const EdgeInsets.all(5.0),
+        margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           border: Border.all(
             color: isSelected ? Colors.amber : Colors.transparent,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../services/chatPage.dart';
 import '../services/searchBar.dart';
 
 class Chat extends StatelessWidget {
@@ -10,8 +11,8 @@ class Chat extends StatelessWidget {
     return const Scaffold(
         body: Column(
         children: [
-        SafeArea(child: Search()),
-    Center(child: Text('Chat Page', style: TextStyle(fontSize: 48.0)))
+          SafeArea(child: Search()),
+          Expanded(child: ChatPage()),
 
     ],
         ),

@@ -27,8 +27,8 @@ class _ChooseLocationState extends State<ChooseLocation> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
               children: [
                   const Row(

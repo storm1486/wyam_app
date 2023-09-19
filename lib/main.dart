@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wyam_app/pages/applications.dart';
 import 'package:wyam_app/pages/home.dart';
-import 'package:wyam_app/pages/main_page.dart';
+import 'package:wyam_app/pages/mainPage.dart';
 
 void main() => runApp(MaterialApp(
  initialRoute: '/',
