@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wyam_app/pages/settings.dart';
+import 'chatPage.dart';
 import 'applications.dart';
-import 'chat.dart';
 import 'home.dart';
 
 class MainPage extends StatefulWidget {
@@ -17,7 +17,7 @@ class _MainPageState extends State<MainPage> {
   final pages = [
     const Home(),
     const Applications(),
-    const Chat(),
+    const ChatPage(),
     const Settings()
   ];
 
