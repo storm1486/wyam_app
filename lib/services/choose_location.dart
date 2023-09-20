@@ -13,14 +13,14 @@ class _ChooseLocationState extends State<ChooseLocation> {
 
 
   List<Amenities> locations = [
-    Amenities(location: 'Location 1', hours: '7:00 am - 8:00 pm', image: '1.png', appointments: '2'),
-    Amenities(location: 'Location 2', hours: '24 hours', image: 'south_korea.png', appointments: '3'),
-    Amenities(location: 'Location 3', hours: '10:00 am - 3:00 pm', image: '1.png', appointments: '0'),
-    Amenities(location: 'Location 4', hours: '12:00 pm - 9:00 pm', image: 'uk.png', appointments: '5'),
-    Amenities(location: 'Location 5', hours: '7:00 am - 10:00 pm', image: '1.png', appointments: '7'),
-    Amenities(location: 'Location 6', hours: '5:00 am - 2:00 am', image: 'usa.png', appointments: '1'),
-    Amenities(location: 'Location 7', hours: '2:00 pm - 11:00 pm', image: 'south_korea.png', appointments: '30'),
-    Amenities(location: 'Location 8', hours: '1:00 pm - 5:00 pm', image: '1.png', appointments: '0'),
+    Amenities(location: 'Location 1', hours: '7:00 am - 8:00 pm', image: 'location1.jpg', appointments: '2'),
+    Amenities(location: 'Location 2', hours: '24 hours', image: 'location2.jpg', appointments: '3'),
+    Amenities(location: 'Location 3', hours: '10:00 am - 3:00 pm', image: 'location3.jpg', appointments: '0'),
+    Amenities(location: 'Location 4', hours: '12:00 pm - 9:00 pm', image: 'location4.jpg', appointments: '5'),
+    Amenities(location: 'Location 5', hours: '7:00 am - 10:00 pm', image: 'location5.jpg', appointments: '7'),
+    Amenities(location: 'Location 6', hours: '5:00 am - 2:00 am', image: 'location6.jpg', appointments: '1'),
+    Amenities(location: 'Location 7', hours: '2:00 pm - 11:00 pm', image: 'location7.jpg', appointments: '30'),
+    Amenities(location: 'Location 8', hours: '1:00 pm - 5:00 pm', image: 'location8.jpg', appointments: '0'),
   ];
 
   @override
@@ -82,18 +82,18 @@ class _ChooseLocationState extends State<ChooseLocation> {
                                     child: Stack(
                                       children: [
                                         Container(
-                                        height: 100,
+                                        height: 125,
                                           // background image for each card
-                                          // decoration: BoxDecoration(
-                                          //   image: DecorationImage(
-                                          //     image: AssetImage('assets/${locations[index].image}'),
-                                          //     fit: BoxFit.fill,
-                                          //     colorFilter: ColorFilter.mode(
-                                          //       Colors.black.withOpacity(0.75),
-                                          //       BlendMode.dstATop,
-                                          //     )
-                                          //   ),
-                                          // ),
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage('assets/${locations[index].image}'),
+                                              fit: BoxFit.cover,
+                                              colorFilter: ColorFilter.mode(
+                                                Colors.white.withOpacity(.25),
+                                                BlendMode.dstATop,
+                                              )
+                                            ),
+                                          ),
                                         child: ListTile(
                                           shape: RoundedRectangleBorder(
                                               borderRadius: BorderRadius.circular(20)
