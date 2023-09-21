@@ -13,14 +13,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String? selectedType;
+  String? selectedSortOrder;
+  final List<String> sortOptions = ['Nearest', 'Farthest'];
 
-  void _onTypeSelected(String type) {
+  void _onFilterChanged(String type) {
     setState(() {
       if (selectedType == type) {
         selectedType = null;
       } else {
         selectedType = type;
       }
+
+      sortLocations(selectedSortOrder!);
+
     });
   }
 
@@ -72,7 +77,29 @@ class _HomeState extends State<Home> {
                 'Finance',
                 'Other',
               ],
-              onItemSelected: _onTypeSelected,
+              onItemSelected: _onFilterChanged,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: DropdownButton(
+                  borderRadius: BorderRadius.circular(10),
+                  value: selectedSortOrder,
+                  hint: Text('Sort by'),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedSortOrder = newValue;
+                    });
+                  },
+                  items: sortOptions.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+              ),
             ),
             Expanded(
               child: ChooseLocation(selectedType: selectedType),

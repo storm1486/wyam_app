@@ -10,7 +10,38 @@ class ChooseLocation extends StatefulWidget {
   State<ChooseLocation> createState() => _ChooseLocationState();
 }
 
+List<Amenities> locations = [
+  Amenities(location: 'Location 1', hours: '7:00 am - 8:00 pm', image: 'location1.jpg', appointments: '2', type: 'Food', distance: '1 mi | 21 min walk'),
+  Amenities(location: 'Location 2', hours: '24 hours', image: 'location2.jpg', appointments: '3', type: 'Hygiene', distance: '2 mi | 42 min walk'),
+  Amenities(location: 'Location 3', hours: '10:00 am - 3:00 pm', image: 'location3.jpg', appointments: '0', type: 'Finance', distance: '4 mi | 1 hr 24 min walk'),
+  Amenities(location: 'Location 4', hours: '12:00 pm - 9:00 pm', image: 'location4.jpg', appointments: '5', type: 'Work', distance: '5 mi | 1 hr 43 min walk'),
+  Amenities(location: 'Location 5', hours: '7:00 am - 10:00 pm', image: 'location5.jpg', appointments: '7', type: 'Learn', distance: '0.2 mi | 5 min walk'),
+  Amenities(location: 'Location 6', hours: '5:00 am - 2:00 am', image: 'location6.jpg', appointments: '1', type: 'Shelter', distance: '0.5 mi | 12 min walk'),
+  Amenities(location: 'Location 7', hours: '2:00 pm - 11:00 pm', image: 'location7.jpg', appointments: '30', type: 'Other', distance: '1000 ft | 3 min walk'),
+  Amenities(location: 'Location 8', hours: '1:00 pm - 5:00 pm', image: 'location8.jpg', appointments: '0', type: 'Health', distance: '0.6 mi | 14 min walk'),
+];
+
+void sortLocations(String sortOrder) {
+  if (sortOrder == 'Nearest') {
+    locations.sort((a, b) => _parseDistance(a.distance).compareTo(_parseDistance(b.distance)));
+  } else if (sortOrder == 'Farthest') {
+    locations.sort((a, b) => _parseDistance(b.distance).compareTo(_parseDistance(a.distance)));
+  }
+}
+
+double _parseDistance(String distanceString) {
+  if (distanceString.contains('ft')) {
+    // Convert feet to miles for comparison; assuming 5280 feet in a mile
+    return double.parse(distanceString.split(' ')[0]) / 5280;
+  } else if (distanceString.contains('mi')) {
+    return double.parse(distanceString.split(' ')[0]);
+  } else {
+    return 0.0;  // Default value if unable to parse
+  }
+}
+
 class _ChooseLocationState extends State<ChooseLocation> {
+
   Map<String, List<String>> typeMapping = {
     "All": ["All"],
     "Food": ["Food"],
@@ -22,16 +53,6 @@ class _ChooseLocationState extends State<ChooseLocation> {
     "Other": ["Other"],
   };
 
-  List<Amenities> locations = [
-    Amenities(location: 'Location 1', hours: '7:00 am - 8:00 pm', image: 'location1.jpg', appointments: '2', type: 'Food', distance: '1 mi | 21 min walk'),
-    Amenities(location: 'Location 2', hours: '24 hours', image: 'location2.jpg', appointments: '3', type: 'Hygiene', distance: '2 mi | 42 min walk'),
-    Amenities(location: 'Location 3', hours: '10:00 am - 3:00 pm', image: 'location3.jpg', appointments: '0', type: 'Finance', distance: '4 mi | 1 hr 24 min walk'),
-    Amenities(location: 'Location 4', hours: '12:00 pm - 9:00 pm', image: 'location4.jpg', appointments: '5', type: 'Work', distance: '5 mi | 1 hr 43 min walk'),
-    Amenities(location: 'Location 5', hours: '7:00 am - 10:00 pm', image: 'location5.jpg', appointments: '7', type: 'Learn', distance: '0.2 mi | 5 min walk'),
-    Amenities(location: 'Location 6', hours: '5:00 am - 2:00 am', image: 'location6.jpg', appointments: '1', type: 'Shelter', distance: '0.5 mi | 12 min walk'),
-    Amenities(location: 'Location 7', hours: '2:00 pm - 11:00 pm', image: 'location7.jpg', appointments: '30', type: 'Other', distance: '1000 ft | 3 min walk'),
-    Amenities(location: 'Location 8', hours: '1:00 pm - 5:00 pm', image: 'location8.jpg', appointments: '0', type: 'Health', distance: '0.6 mi | 14 min walk'),
-  ];
 
   @override
   Widget build(BuildContext context) {
