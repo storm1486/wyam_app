@@ -51,19 +51,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
                     style: TextStyle(fontSize: 20.0),
                   ),
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
-                    // child: HorizontalScroller(
-                    //   //ways to sort the location list
-                    //       items: [
-                    //         'Distance',
-                    //         'Type',
-                    //         'Availability',
-                    //       ]),
-                  ),
-                ),
-              ],
+               ],
             ),
             ListView.builder(
               padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0),
@@ -72,7 +60,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
               itemCount: locations.length,
               itemBuilder: (context, index) {
                 List<String>? mappedTypes = typeMapping[widget.selectedType ?? "All"];
-
+                //Display the locations depending on the type parameter
                 if (widget.selectedType != null && !mappedTypes!.contains(locations[index].type) && !mappedTypes.contains("All")) {
                   return SizedBox.shrink();  // Do not display items that don't match the type
                 }
