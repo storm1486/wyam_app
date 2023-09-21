@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
                           prefixIcon: Icon(Icons.search,color: Colors.grey[600], size: 20,),
                           filled: true,
                           fillColor: Colors.grey.shade200,
-                          contentPadding: EdgeInsets.all(8),
+                          contentPadding: const EdgeInsets.all(8),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
                               borderSide: BorderSide(
@@ -55,7 +55,7 @@ class _HomeState extends State<Home> {
                     ),
                     IconButton(onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const Applications()));},
-                        icon: const Icon(Icons.edit))
+                        icon: const Icon(Icons.edit, color: Colors.black,))
                   ],
                 ),
               ),

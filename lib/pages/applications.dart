@@ -66,6 +66,10 @@ class _ApplicationsState extends State<Applications> with TickerProviderStateMix
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //color of pushed back arrow icon
+        iconTheme: const IconThemeData(
+          color: Colors.black
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Container(

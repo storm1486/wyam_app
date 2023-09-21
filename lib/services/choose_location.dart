@@ -23,14 +23,14 @@ class _ChooseLocationState extends State<ChooseLocation> {
   };
 
   List<Amenities> locations = [
-    Amenities(location: 'Location 1', hours: '7:00 am - 8:00 pm', image: 'location1.jpg', appointments: '2', type: 'Food', distance: '1 mi'),
-    Amenities(location: 'Location 2', hours: '24 hours', image: 'location2.jpg', appointments: '3', type: 'Hygiene', distance: '2 mi'),
-    Amenities(location: 'Location 3', hours: '10:00 am - 3:00 pm', image: 'location3.jpg', appointments: '0', type: 'Finance', distance: '4 mi'),
-    Amenities(location: 'Location 4', hours: '12:00 pm - 9:00 pm', image: 'location4.jpg', appointments: '5', type: 'Work', distance: '5 mi'),
-    Amenities(location: 'Location 5', hours: '7:00 am - 10:00 pm', image: 'location5.jpg', appointments: '7', type: 'Learn', distance: '0.2 mi'),
-    Amenities(location: 'Location 6', hours: '5:00 am - 2:00 am', image: 'location6.jpg', appointments: '1', type: 'Shelter', distance: '0.5 mi'),
-    Amenities(location: 'Location 7', hours: '2:00 pm - 11:00 pm', image: 'location7.jpg', appointments: '30', type: 'Other', distance: '1000 ft'),
-    Amenities(location: 'Location 8', hours: '1:00 pm - 5:00 pm', image: 'location8.jpg', appointments: '0', type: 'Health', distance: '0.6 mi'),
+    Amenities(location: 'Location 1', hours: '7:00 am - 8:00 pm', image: 'location1.jpg', appointments: '2', type: 'Food', distance: '1 mi | 21 min walk'),
+    Amenities(location: 'Location 2', hours: '24 hours', image: 'location2.jpg', appointments: '3', type: 'Hygiene', distance: '2 mi | 42 min walk'),
+    Amenities(location: 'Location 3', hours: '10:00 am - 3:00 pm', image: 'location3.jpg', appointments: '0', type: 'Finance', distance: '4 mi | 1 hr 24 min walk'),
+    Amenities(location: 'Location 4', hours: '12:00 pm - 9:00 pm', image: 'location4.jpg', appointments: '5', type: 'Work', distance: '5 mi | 1 hr 43 min walk'),
+    Amenities(location: 'Location 5', hours: '7:00 am - 10:00 pm', image: 'location5.jpg', appointments: '7', type: 'Learn', distance: '0.2 mi | 5 min walk'),
+    Amenities(location: 'Location 6', hours: '5:00 am - 2:00 am', image: 'location6.jpg', appointments: '1', type: 'Shelter', distance: '0.5 mi | 12 min walk'),
+    Amenities(location: 'Location 7', hours: '2:00 pm - 11:00 pm', image: 'location7.jpg', appointments: '30', type: 'Other', distance: '1000 ft | 3 min walk'),
+    Amenities(location: 'Location 8', hours: '1:00 pm - 5:00 pm', image: 'location8.jpg', appointments: '0', type: 'Health', distance: '0.6 mi | 14 min walk'),
   ];
 
   @override
@@ -60,18 +60,22 @@ class _ChooseLocationState extends State<ChooseLocation> {
               itemCount: locations.length,
               itemBuilder: (context, index) {
                 List<String>? mappedTypes = typeMapping[widget.selectedType ?? "All"];
+
                 //Display the locations depending on the type parameter
                 if (widget.selectedType != null && !mappedTypes!.contains(locations[index].type) && !mappedTypes.contains("All")) {
                   return SizedBox.shrink();  // Do not display items that don't match the type
                 }
+
                 //Determine the color based on number of appointments
                 Color? availabilityColor = locations[index].appointments == '0'
                     ? Colors.grey // Set to red for zero appointments
                     : Colors.cyan[800]; // Set to blue for non-zero appointments
+
                 // Determine the text based on the number of appointments
                 String availabilityText = locations[index].appointments == '0'
                     ? "Unavailable" // Display when there are no appointments
                     : "${locations[index].appointments} Available"; // Display when there are appointments
+
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 4.0),
                   child: Card(
@@ -102,7 +106,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
                               onTap: () {},
                               title: Padding(
                                 padding: const EdgeInsets.fromLTRB(10, 5, 0, 0),
-                                child: Text(locations[index].location, style: TextStyle(fontSize: 20)),
+                                child: Text(locations[index].location, style: TextStyle(fontSize: 20, color: Colors.blue[900], fontWeight: FontWeight.bold)),
                               ),
                               subtitle: Padding(
                                 padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
@@ -110,8 +114,8 @@ class _ChooseLocationState extends State<ChooseLocation> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     // Text(locations[index].address),
-                                    // Text(locations[index].distance),
-                                    Text(locations[index].hours),
+                                    Text(locations[index].distance, style: TextStyle(color: Colors.blue[900]),),
+                                    Text(locations[index].hours, style: TextStyle(color: Colors.blue[900]),),
                                   ],
                                 ),
                               ),
