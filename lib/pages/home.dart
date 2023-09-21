@@ -13,9 +13,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String? selectedType;
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -32,9 +34,18 @@ class _HomeState extends State<Home> {
                      'Finance',
                      'Other',
                    ],
+                   onItemSelected: (type) {
+                     setState(() {
+                       if (selectedType == type) {
+                         selectedType = null;
+                       } else {
+                         selectedType = type;
+                       }
+                     });
+                   },
                  ),
                  Expanded(
-                   child: ChooseLocation(),
+                   child: ChooseLocation(selectedType: selectedType,),
                 ),
               ],
             ),

@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
 
-class HorizontalScroller extends StatelessWidget {
+class HorizontalScroller extends StatefulWidget {
   final List<String> items; // Add a parameter for the list of items
+  final Function(String) onItemSelected;
 
-  const HorizontalScroller({super.key, required this.items}); // Constructor
+  const HorizontalScroller({super.key, required this.items, required this.onItemSelected});
+  @override
+  State<HorizontalScroller> createState() => _HorizontalScrollerState();
+}
+
+class _HorizontalScrollerState extends State<HorizontalScroller> {
+  String? selectedItem;
+
+  void _onItemTap(String item) {
+    setState(() {
+      selectedItem = item == selectedItem ? null : item;
+    });
+    widget.onItemSelected(item);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,34 +25,30 @@ class HorizontalScroller extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       physics: const AlwaysScrollableScrollPhysics(),
       child: Row(
-        children: items.map((item) {
-          return _ScrollerItem(text: item);
+        children: widget.items.map((item) {
+          return _ScrollerItem(
+            text: item,
+            isSelected: item == selectedItem,
+            onTap: () => _onItemTap(item),
+          );
         }).toList(),
       ),
     );
   }
 }
 
-class _ScrollerItem extends StatefulWidget {
+class _ScrollerItem extends StatelessWidget {
   final String text;
+  final bool isSelected;
+  final VoidCallback onTap;
 
-  const _ScrollerItem({super.key, required this.text});
+  const _ScrollerItem({required this.text, required this.onTap, required this.isSelected});
 
-  @override
-  State<_ScrollerItem> createState() => _ScrollerItemState();
-}
-
-class _ScrollerItemState extends State<_ScrollerItem> {
-  bool isSelected = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          isSelected = !isSelected; // Toggle the selected state
-        });
-      },
+      onTap: onTap,
       child: Container(
         width: 120.0, // Adjust the width as needed
         height: 50.0, // Adjust the height as needed
@@ -52,7 +62,7 @@ class _ScrollerItemState extends State<_ScrollerItem> {
         ),
         child: Center(
           child: Text(
-            widget.text,
+            text,
             style: TextStyle(
               fontSize: 18.0,
               color: isSelected ? Colors.amber : Colors.black,
