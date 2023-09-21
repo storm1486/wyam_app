@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
 import '../services/chatMessageModel.dart';
 
 class ChatDetailPage extends StatefulWidget{
   late String name; //get name of the friend
-  late String image;
+  late String image; //get profile picture of the friend
 
   ChatDetailPage({super.key, required this.name, required this.image});
 
@@ -16,7 +15,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   List<ChatMessage> messages = [
     ChatMessage(messageContent: "Hello, Will", messageType: "receiver"),
     ChatMessage(messageContent: "How have you been?", messageType: "receiver"),
-    ChatMessage(messageContent: "Hey Kriss, I am doing fine dude. wbu?", messageType: "sender"),
+    ChatMessage(messageContent: "Hey, I am doing fine dude. wbu?", messageType: "sender"),
     ChatMessage(messageContent: "ehhhh, doing OK.", messageType: "receiver"),
     ChatMessage(messageContent: "Is there any thing wrong?", messageType: "sender"),
   ];
@@ -71,8 +70,18 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
               physics: NeverScrollableScrollPhysics(),
               itemBuilder: (context, index){
                 return Container(
-                  padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 10),
-                  child: Text(messages[index].messageContent),
+                  padding: EdgeInsets.only(left: 14,right: 14,top: 10,bottom: 10),
+                  child: Align(
+                    alignment: (messages[index].messageType == "receiver"?Alignment.topLeft:Alignment.topRight),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: (messages[index].messageType  == "receiver"?Colors.grey.shade200:Colors.blue[200]),
+                      ),
+                      padding: EdgeInsets.all(16),
+                      child: Text(messages[index].messageContent, style: TextStyle(fontSize: 15),),
+                    ),
+                  ),
                 );
               },
             ),
