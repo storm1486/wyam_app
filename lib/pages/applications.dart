@@ -66,12 +66,13 @@ class _ApplicationsState extends State<Applications> with TickerProviderStateMix
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[200],
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         title: Container(
             width: double.infinity,
             height: 50.0,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Colors.grey[200],
               borderRadius: BorderRadius.circular(40),
             ),
             child: Center(
@@ -92,22 +93,25 @@ class _ApplicationsState extends State<Applications> with TickerProviderStateMix
             ),
         ),
         actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Applications()));
-              },
-              icon: const Icon(Icons.edit)
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Applications()));
+                },
+                icon: const Icon(Icons.edit, color: Colors.black,)
+            ),
           ),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // const SafeArea(child: Search()), //Search Bar at the top of the page
             SafeArea(
               child: InkWell(
                 onTap: _toggleDropdown, // Trigger dropdown visibility on tap
                 child: Container(
+                  color: Colors.transparent,
                   padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,

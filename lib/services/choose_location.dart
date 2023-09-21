@@ -23,14 +23,14 @@ class _ChooseLocationState extends State<ChooseLocation> {
   };
 
   List<Amenities> locations = [
-    Amenities(location: 'Location 1', hours: '7:00 am - 8:00 pm', image: 'location1.jpg', appointments: '2', type: 'Food'),
-    Amenities(location: 'Location 2', hours: '24 hours', image: 'location2.jpg', appointments: '3', type: 'Hygiene'),
-    Amenities(location: 'Location 3', hours: '10:00 am - 3:00 pm', image: 'location3.jpg', appointments: '0', type: 'Finance'),
-    Amenities(location: 'Location 4', hours: '12:00 pm - 9:00 pm', image: 'location4.jpg', appointments: '5', type: 'Work'),
-    Amenities(location: 'Location 5', hours: '7:00 am - 10:00 pm', image: 'location5.jpg', appointments: '7', type: 'Learn'),
-    Amenities(location: 'Location 6', hours: '5:00 am - 2:00 am', image: 'location6.jpg', appointments: '1', type: 'Shelter'),
-    Amenities(location: 'Location 7', hours: '2:00 pm - 11:00 pm', image: 'location7.jpg', appointments: '30', type: 'Other'),
-    Amenities(location: 'Location 8', hours: '1:00 pm - 5:00 pm', image: 'location8.jpg', appointments: '0', type: 'Health'),
+    Amenities(location: 'Location 1', hours: '7:00 am - 8:00 pm', image: 'location1.jpg', appointments: '2', type: 'Food', distance: '1 mi'),
+    Amenities(location: 'Location 2', hours: '24 hours', image: 'location2.jpg', appointments: '3', type: 'Hygiene', distance: '2 mi'),
+    Amenities(location: 'Location 3', hours: '10:00 am - 3:00 pm', image: 'location3.jpg', appointments: '0', type: 'Finance', distance: '4 mi'),
+    Amenities(location: 'Location 4', hours: '12:00 pm - 9:00 pm', image: 'location4.jpg', appointments: '5', type: 'Work', distance: '5 mi'),
+    Amenities(location: 'Location 5', hours: '7:00 am - 10:00 pm', image: 'location5.jpg', appointments: '7', type: 'Learn', distance: '0.2 mi'),
+    Amenities(location: 'Location 6', hours: '5:00 am - 2:00 am', image: 'location6.jpg', appointments: '1', type: 'Shelter', distance: '0.5 mi'),
+    Amenities(location: 'Location 7', hours: '2:00 pm - 11:00 pm', image: 'location7.jpg', appointments: '30', type: 'Other', distance: '1000 ft'),
+    Amenities(location: 'Location 8', hours: '1:00 pm - 5:00 pm', image: 'location8.jpg', appointments: '0', type: 'Health', distance: '0.6 mi'),
   ];
 
   @override
@@ -41,20 +41,20 @@ class _ChooseLocationState extends State<ChooseLocation> {
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
-                  child: Text(
-                    'Sort by',
-                    style: TextStyle(fontSize: 20.0),
-                  ),
-                ),
-               ],
-            ),
+            // const Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //   children: [
+            //     Padding(
+            //       padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
+            //       child: Text(
+            //         'Sort by',
+            //         style: TextStyle(fontSize: 20.0),
+            //       ),
+            //     ),
+            //    ],
+            // ),
             ListView.builder(
-              padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0),
+              padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 0),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: locations.length,

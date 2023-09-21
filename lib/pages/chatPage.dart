@@ -38,15 +38,15 @@ class _ChatPageState extends State<ChatPage> {
                         child: TextField(
                           decoration: InputDecoration(
                             hintText: "Search for a person or message",
-                            hintStyle: TextStyle(color: Colors.grey.shade600),
-                            prefixIcon: Icon(Icons.search,color: Colors.grey.shade600, size: 20,),
+                            hintStyle: TextStyle(color: Colors.grey[600]),
+                            prefixIcon: Icon(Icons.search,color: Colors.grey[600], size: 20,),
                             filled: true,
-                            fillColor: Colors.grey.shade100,
+                            fillColor: Colors.grey.shade200,
                             contentPadding: EdgeInsets.all(8),
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide: BorderSide(
-                                    color: Colors.grey.shade100
+                                    color: Colors.grey.shade200,
                                 )
                             ),
                           ),

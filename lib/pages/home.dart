@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wyam_app/services/choose_location.dart';
 import 'package:wyam_app/services/horizontalScroller.dart';
-
-import '../services/searchBar.dart';
+import 'applications.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -31,7 +30,36 @@ class _HomeState extends State<Home> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SafeArea(child: Search()),
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(8, 8, 8, 10),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Search for a person or message",
+                          hintStyle: TextStyle(color: Colors.grey[600]),
+                          prefixIcon: Icon(Icons.search,color: Colors.grey[600], size: 20,),
+                          filled: true,
+                          fillColor: Colors.grey.shade200,
+                          contentPadding: EdgeInsets.all(8),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.grey.shade200,
+                              )
+                          ),
+                        ),
+                      ),
+                    ),
+                    IconButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const Applications()));},
+                        icon: const Icon(Icons.edit))
+                  ],
+                ),
+              ),
+            ),
             // scroller feature
             HorizontalScroller(
               items: const [
@@ -46,9 +74,8 @@ class _HomeState extends State<Home> {
               ],
               onItemSelected: _onTypeSelected,
             ),
-
             Expanded(
-              child: ChooseLocation(selectedType: selectedType,),
+              child: ChooseLocation(selectedType: selectedType),
             ),
           ],
         ),
