@@ -53,7 +53,66 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
             ),
           ),
         ),
-        body: Container()
+        body: Stack(
+          children: [
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Container(
+                padding: EdgeInsets.only(left: 10,bottom: 10,top: 10),
+                height: 60,
+                width: double.infinity,
+                color: Colors.white,
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: (){
+                      },
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          color: Colors.blueGrey[700],
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Icon(Icons.mic_none, color: Colors.white, size: 20 ),
+                      ),
+                    ),
+                    SizedBox(width: 15,),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Write message...",
+                          hintStyle: TextStyle(color: Colors.black),
+                          contentPadding: EdgeInsets.only(left: 10, top: 5),
+                          border: OutlineInputBorder(  // Modify this line
+                              borderRadius: BorderRadius.circular(25.0),
+                              borderSide: BorderSide.none,  // Hide the default border
+                            ),
+                          filled: true,
+                          fillColor: Colors.grey[300],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15,),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: FloatingActionButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)
+                        ),
+                        onPressed: (){},
+                        child: Text("Send", style: TextStyle(color: Colors.white, fontSize: 12),),
+                        backgroundColor: Colors.cyan[800],
+                        elevation: 0,
+                      ),
+                    ),
+                  ],
+
+                ),
+              ),
+            ),
+          ],
+        ),
     );
   }
 }
